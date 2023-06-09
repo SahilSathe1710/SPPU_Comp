@@ -1,0 +1,22 @@
+trigger Calculator on calc__c (before Insert, before update){
+    for(calc__c s : trigger.new){
+         if(trigger.isInsert || trigger.isUpdate){
+            if(s.operator__c=='/')
+            {
+                s.output__c= s.val1__c / s.val2__c;        
+            }
+            else if(s.operator__c=='*')
+            {
+                s.output__c= s.val1__c * s.val2__c;        
+            } 
+            else if(s.operator__c=='-')
+            {
+                s.output__c= s.val1__c - s.val2__c;        
+            } 
+            else if(s.operator__c=='+')
+            {
+                s.output__c= s.val1__c + s.val2__c;        
+            }
+        }
+    }
+}
